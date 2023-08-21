@@ -9,7 +9,7 @@ services:
     volumes:
      - /tmp/.X11-unix:/tmp/.X11-unix
      - $HOME/.Xauthority/:/root/.Xauthority
-     - ./shere_dir:/shere_dir
+     - ./share_dir:/share_dir
     environment:
       DISPLAY: $DISPLAY
       XDG_RUNTIME_DIR: $XDG_RUNTIME_DIR

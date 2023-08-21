@@ -55,7 +55,7 @@ RUN . ~/.bashrc
 RUN apt install -y build-essential
 
 
-RUN mkdir shere_dir \
-    && cd shere_dir
+RUN mkdir share_dir \
+    && cd share_dir
 
-WORKDIR shere_dir
+WORKDIR share_dir
