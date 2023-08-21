@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ubuntu2004:
+    container_name: ubuntu2004_develop
+    image: learn:ubuntu2004_develop
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+     - /tmp/.X11-unix:/tmp/.X11-unix
+     - $HOME/.Xauthority/:/root/.Xauthority
+     - ./shere_dir:/shere_dir
+    environment:
+      DISPLAY: $DISPLAY
+      XDG_RUNTIME_DIR: $XDG_RUNTIME_DIR
+    network_mode: host
+    pid: host
+    privileged: true
+    deploy:
+    tty: true
