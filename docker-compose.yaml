@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        cmake_version: 3.27.3
     volumes:
      - /tmp/.X11-unix:/tmp/.X11-unix
      - $HOME/.Xauthority/:/root/.Xauthority

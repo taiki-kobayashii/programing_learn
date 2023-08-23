@@ -52,8 +52,17 @@ RUN echo 'export PATH' >> ~/.bashrc
 RUN . ~/.bashrc
 
 # Install gcc & g++
-RUN apt install -y build-essential
-
+ARG cmake_version
+RUN apt update && \
+    apt -y install build-essential checkinstall zlib1g-dev libssl-dev gcc g++ make libtool texinfo dpkg-dev pkg-config gpg wget && \
+    wget https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-${cmake_version}.tar.gz && \
+    tar -zxvf cmake-${cmake_version}.tar.gz && \
+    cd cmake-${cmake_version} && \
+    ./bootstrap && \
+    make && \
+    make install
+RUN echo 'export PATH=$HOME/cmake-${cmake_version}/bin/:$PATH' >> ~/.bashrc
+RUN . ~/.bashrc
 
 RUN mkdir share_dir \
     && cd share_dir
